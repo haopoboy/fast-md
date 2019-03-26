@@ -1,4 +1,7 @@
+import { DatePipe } from "@angular/common";
+import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
+import { PageEvent } from "@angular/material";
 
 @Component({
   selector: "app-contracts",
@@ -6,10 +9,49 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./contracts.component.css"]
 })
 export class ContractsComponent implements OnInit {
+  page: any = {
+    content: []
+  };
+  searchTerm = "";
+  startDate;
+  endDate;
 
-  constructor() { }
+  constructor(private http: HttpClient, private datePipe: DatePipe) {}
 
   ngOnInit() {
+    this.findAll();
   }
 
+  async findAll(event?: PageEvent) {
+    this.page.content = [];
+    const startString = this.startDate
+      ? `&startDate=${this.datePipe.transform(this.startDate, "yyyy-MM-dd")}`
+      : "";
+    const endString = this.endDate
+      ? `&endDate=${this.datePipe.transform(this.endDate, "yyyy-MM-dd")}`
+      : "";
+
+    let pagingString = "";
+    if (event) {
+      pagingString = `&page=${event.pageIndex}&size=${event.pageSize}`;
+    }
+    const page: any = await this.http
+      .get(
+        `/query/v2/contractProjectV2?onlyShowMine=false&q=${
+          this.searchTerm
+        }${startString}${endString}${pagingString}`
+      )
+      .toPromise();
+
+    page.content.forEach(row => {
+      row.customer = row.currently.customer[0];
+      row.contract = row.currently.adsContract[0];
+    });
+
+    this.page = page;
+  }
+
+  onPageChange(event: PageEvent) {
+    this.findAll(event);
+  }
 }

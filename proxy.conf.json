@@ -1,0 +1,58 @@
+{
+  "/whoami": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/admin": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/menu": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/resource": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/drive": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/api": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/query": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/download": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/pos": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/template": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/capi": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/es/": {
+    "target": "http://localhost:8081",
+    "secure": false
+  },
+  "/public/": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/eds/": {
+    "target": "http://localhost:8080",
+    "secure": false
+  }
+}

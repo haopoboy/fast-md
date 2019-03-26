@@ -2,3 +2,31 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.data-table {
+    width: 100%;
+    border: 1px solid;
+    border-collapse: collapse;
+    background-color: inherit;
+}
+.data-table .numeric {
+    text-align: right;
+}
+
+.data-table th {
+    position: sticky;
+    top: -1px;
+    z-index: 100;
+}
+
+.data-table tfoot td {
+  position: sticky;
+  bottom: 0px;
+  z-index: 100;
+}
+  
+.data-table th,
+.data-table td {
+    border: 1px solid;
+    padding: 10px;
+}

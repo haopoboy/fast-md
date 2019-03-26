@@ -1,0 +1,72 @@
+<table class="data-table">
+  <tr>
+    <td width="10%" align="right">客戶編號：</td>
+    <td>{{data.customer.systemId}}</td>
+  </tr>
+  <tr>
+    <td width="10%" align="right">合約：</td>
+    <td>{{data.customer.systemId}}</td>
+  </tr>
+  <tr>
+    <td width="10%" align="right">EIP 同步資料：</td>
+    <td>
+      公司名稱：<br />
+      公司統編：<br />
+      公司地址：<br />
+      發票抬頭：<br />
+      發票地址：<br />
+    </td>
+  </tr>
+  <tr>
+    <td width="10%" align="right">聯絡資料：</td>
+    <td>
+    </td>
+  </tr>
+  <tr>
+    <td width="10%" align="right">業務：</td>
+    <td>目前業務員：{{data.systemUserName}}</td>
+  </tr>
+  <tr>
+    <td width="10%" align="right">企劃：</td>
+    <td>目前企劃：{{data.productPersonInChargeName}}</td>
+  </tr>
+  <tr>
+    <td width="10%" align="right">合約編號：</td>
+    <td>
+      進案日期：{{data.startDate}} 編號：{{data.systemId}}
+    </td>
+  </tr>
+  <tr>
+    <td width="10%" align="right">收費：</td>
+    <td>
+      簽約總金額（含稅）：{{data.amount | number}}元，刊登廣告預算：{{data.contract.budgetAmount | number}}元<br />
+      服務費：{{data.contract.serviceAmount | number}}元（{{data.contract.serviceRate | percent}}），
+      其他費用：{{data.contract.budgetAmount | number}}元，
+      開戶費：{{data.contract.accountOpeningAmount | number}}元<br />
+    </td>
+  </tr>
+  <tr>
+    <td width="10%" align="right">合約類型：</td>
+    <td>{{data.producName}}</td>
+  </tr>
+  <tr>
+    <td width="10%" align="right">合約類型：</td>
+    <td>{{data.producName}}</td>
+  </tr>
+  <tr>
+    <td width="10%" align="right">委刊類型：</td>
+    <td>{{data.state}}</td>
+  </tr>
+  <tr>
+    <td width="10%" align="right">備註：</td>
+    <td>
+      <pre>{{data.contract.comment}}</pre>
+    </td>
+  </tr>
+  <tr>
+    <td width="10%" align="right">財務備註：</td>
+    <td>
+      <pre>{{data.contract.financialComment}}</pre>
+    </td>
+  </tr>
+</table>

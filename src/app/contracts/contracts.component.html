@@ -1,3 +1,62 @@
-<p>
-  contracts works!
-</p>
+<table>
+  <tr>
+    <td>
+      客戶管理 --->
+    </td>
+    <td>
+      <mat-form-field appearance="outline">
+        <mat-label>關鍵字</mat-label>
+        <input matInput [(ngModel)]="searchTerm" (keydown.enter)="findAll()" />
+      </mat-form-field>
+    </td>
+    <td>
+      <mat-form-field appearance="outline">
+        <mat-label>開始</mat-label>
+        <input matInput [(ngModel)]="startDate" [matDatepicker]="startPicker" (keydown.enter)="findAll()">
+        <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+        <mat-datepicker #startPicker></mat-datepicker>
+      </mat-form-field>
+    </td>
+    <td>
+      <mat-form-field appearance="outline">
+        <mat-label>結束</mat-label>
+        <input matInput [(ngModel)]="endDate" [matDatepicker]="endPicker" (keydown.enter)="findAll()">
+        <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+        <mat-datepicker #endPicker></mat-datepicker>
+      </mat-form-field>
+    </td>
+    <td>
+      <button mat-stroked-button (click)="findAll()">送出</button>
+    </td>
+  <tr>
+</table>
+
+<table class="data-table" width="100%">
+  <thead>
+    <td>客戶編號</td>
+    <td>客戶名稱</td>
+    <td>客戶類型</td>
+    <td>合約編號</td>
+    <td>產品</td>
+    <td class="numeric">合約金額</td>
+    <td>預設帳戶名稱</td>
+    <td class="numeric">已收款</td>
+    <td>業務</td>
+    <td>企劃</td>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of page.content">
+      <td>{{row.customer?.systemId}}</td>
+      <td>{{row.customer?.systemName}}</td>
+      <td>{{row.customerTypeName}}</td>
+      <td><a target="_blank" routerLink="/contract/{{row.systemId}}">{{row.systemId}}</a></td>
+      <td>{{row.productName}}</td>
+      <td class="numeric">{{row.amount}}</td>
+      <td>{{row.contract?.defaultAccountName}}</td>
+      <td class="numeric">{{row.receipted | number}}</td>
+      <td>{{row.systemUserName}}</td>
+      <td>{{row.productPersonInChargeId}}</td>
+    </tr>
+  </tbody>
+</table>
+<mat-paginator [length]="page.totalElements" [pageSize]="page.size" (page)="onPageChange($event)"></mat-paginator>

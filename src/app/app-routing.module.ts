@@ -1,11 +1,21 @@
 import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
+import { RouterModule, Routes } from "@angular/router";
+import { ContractComponent } from "./contract/contract.component";
 import { ContractsComponent } from "./contracts/contracts.component";
+import { ReceitpsComponent } from "./receitps/receitps.component";
 
 const routes: Routes = [
   {
-    path: "/contracts",
+    path: "contracts",
     component: ContractsComponent
+  },
+  {
+    path: "contract/:id",
+    component: ContractComponent
+  },
+  {
+    path: "receipts",
+    component: ReceitpsComponent
   }
 ];
 
