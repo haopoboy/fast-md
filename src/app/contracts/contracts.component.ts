@@ -12,6 +12,8 @@ export class ContractsComponent implements OnInit {
   page: any = {
     content: []
   };
+  customerTypeName;
+  state;
   searchTerm = "";
   startDate;
   endDate;
@@ -24,6 +26,15 @@ export class ContractsComponent implements OnInit {
 
   async findAll(event?: PageEvent) {
     this.page.content = [];
+
+    let customerTypeNameQuery = "";
+    if (this.state) {
+      customerTypeNameQuery = `&customerTypeNames=${this.customerTypeName}`;
+    }
+    let stateQuery = "";
+    if (this.state) {
+      stateQuery = `&states=${this.state}`;
+    }
     const startString = this.startDate
       ? `&startDate=${this.datePipe.transform(this.startDate, "yyyy-MM-dd")}`
       : "";
@@ -39,7 +50,7 @@ export class ContractsComponent implements OnInit {
       .get(
         `/query/v2/contractProjectV2?onlyShowMine=false&q=${
           this.searchTerm
-        }${startString}${endString}${pagingString}`
+        }${customerTypeNameQuery}${stateQuery}${startString}${endString}${pagingString}`
       )
       .toPromise();
 
