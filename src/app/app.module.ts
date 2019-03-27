@@ -6,7 +6,8 @@ import {
   MatButtonModule,
   MatInputModule,
   MatPaginatorModule,
-  MAT_DATE_LOCALE
+  MAT_DATE_LOCALE,
+  MatSelectModule
 } from "@angular/material";
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { MatDatepickerModule } from "@angular/material/datepicker";
@@ -36,7 +37,8 @@ import { ReceitpsComponent } from "./receitps/receitps.component";
     MatInputModule,
     FormsModule,
     MatPaginatorModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSelectModule
   ],
   providers: [
     DatePipe,
