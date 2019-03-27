@@ -5,6 +5,23 @@
     </td>
     <td>
       <mat-form-field appearance="outline">
+        <mat-label>客戶類型</mat-label>
+        <mat-select [(value)]="customerTypeName" (keydown.enter)="findAll()">
+          <mat-option value="一般客戶">一般客戶</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </td>
+    <td>
+      <mat-form-field appearance="outline">
+        <mat-label>狀態</mat-label>
+        <mat-select [(value)]="state" (keydown.enter)="findAll()">
+          <mat-option value="N">新約</mat-option>
+          <mat-option value="R">續約</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </td>
+    <td>
+      <mat-form-field appearance="outline">
         <mat-label>關鍵字</mat-label>
         <input matInput [(ngModel)]="searchTerm" (keydown.enter)="findAll()" />
       </mat-form-field>
