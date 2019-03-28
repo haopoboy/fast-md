@@ -22,7 +22,7 @@ export class ContractsComponent implements OnInit {
   constructor(private http: HttpClient, private datePipe: DatePipe) {}
 
   ngOnInit() {
-    this.findAll();
+    this.findAll({ pageIndex: 0, pageSize: 30, length: 0 });
   }
 
   async findAll(event?: PageEvent) {
