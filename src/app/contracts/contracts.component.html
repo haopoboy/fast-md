@@ -70,7 +70,7 @@
       <td>{{row.productName}}</td>
       <td class="numeric">{{row.amount}}</td>
       <td>{{row.contract?.defaultAccountName}}</td>
-      <td class="numeric">{{row.receipted | number}}</td>
+      <td class="numeric">{{row.stat.receipted[0].amount | number}}</td>
       <td>{{row.systemUserName}}</td>
       <td>{{row.productPersonInChargeId}}</td>
     </tr>
