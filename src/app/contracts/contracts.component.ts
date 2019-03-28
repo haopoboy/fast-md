@@ -2,6 +2,7 @@ import { DatePipe } from "@angular/common";
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { PageEvent } from "@angular/material";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-contracts",
@@ -48,7 +49,9 @@ export class ContractsComponent implements OnInit {
     }
     const page: any = await this.http
       .get(
-        `/query/v2/contractProjectV2?onlyShowMine=false&q=${
+        `${
+          environment.apiBaseUrl
+        }/query/v2/contractProjectV2?onlyShowMine=false&q=${
           this.searchTerm
         }${customerTypeNameQuery}${stateQuery}${startString}${endString}${pagingString}`
       )

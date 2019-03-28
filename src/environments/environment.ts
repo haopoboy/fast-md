@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  siginRedirectUrl: "http://adwords.m2m.com.tw/snapshot/sso?redirect="
+  siginRedirectUrl: "http://adwords.m2m.com.tw/snapshot/sso?redirect=",
+  apiBaseUrl: ""
 };
 
 /*
