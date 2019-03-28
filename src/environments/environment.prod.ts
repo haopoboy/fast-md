@@ -1,4 +1,5 @@
 export const environment = {
   production: true,
-  siginRedirectUrl: "/snapshot/sso?redirect="
+  siginRedirectUrl: "/snapshot/sso?redirect=",
+  apiBaseUrl: "/armx/"
 };
