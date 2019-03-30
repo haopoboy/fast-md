@@ -18,16 +18,28 @@ export class ContractsComponent implements OnInit {
   searchTerm = "";
   startDate;
   endDate;
+  loading = false;
 
   constructor(private http: HttpClient, private datePipe: DatePipe) {}
 
   ngOnInit() {
-    this.findAll({ pageIndex: 0, pageSize: 30, length: 0 });
+    this.findAll();
   }
 
-  async findAll(event?: PageEvent) {
-    this.page.content = [];
+  async findAll(event: PageEvent = { pageIndex: 0, pageSize: 30, length: 0 }) {
+    try {
+      this.loading = true;
+      this.page.content = [];
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      this.page = await this.findData(event);
+    } catch (err) {
+      window.alert(err);
+    } finally {
+      this.loading = false;
+    }
+  }
 
+  async findData(event?: PageEvent) {
     let customerTypeNameQuery = "";
     if (this.state) {
       customerTypeNameQuery = `&customerTypeNames=${this.customerTypeName}`;
@@ -62,7 +74,7 @@ export class ContractsComponent implements OnInit {
       row.contract = row.currently.adsContract[0];
     });
 
-    this.page = page;
+    return page;
   }
 
   onPageChange(event: PageEvent) {
