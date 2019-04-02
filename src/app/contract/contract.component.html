@@ -5,21 +5,25 @@
   </tr>
   <tr>
     <td width="10%" align="right">合約：</td>
-    <td>{{data.customer.systemId}}</td>
+    <td>{{data.systemId}}</td>
   </tr>
   <tr>
     <td width="10%" align="right">EIP 同步資料：</td>
     <td>
-      公司名稱：<br />
-      公司統編：<br />
-      公司地址：<br />
-      發票抬頭：<br />
-      發票地址：<br />
+      公司名稱：{{data.customer.systemName}}<br />
+      公司統編：{{data.customer.taxNumber}}<br />
+      公司地址：{{data.customer.address}}<br />
+      發票抬頭：{{data.customer.invoiceTitle}}<br />
+      發票統編：{{data.customer.invoiceTaxNumber}}<br />
+      發票地址：{{data.customer.invoiceAddress}}<br />
     </td>
   </tr>
   <tr>
     <td width="10%" align="right">聯絡資料：</td>
     <td>
+      聯絡人：{{data.contract.contactName}}，
+      電話：{{data.contract.contactPhone}}<br />
+      信箱：{{data.contract.contactEmail}}<br />
     </td>
   </tr>
   <tr>
@@ -28,7 +32,22 @@
   </tr>
   <tr>
     <td width="10%" align="right">企劃：</td>
-    <td>目前企劃：{{data.productPersonInChargeName}}</td>
+    <td>
+      目前企劃：{{data.productPersonInChargeName}} <br />
+      <table *ngIf="data.picHistories?.length > 0" class="data-table" style="width: 350px">
+        <tr>
+          <td>企劃</td>
+          <td>開始</td>
+          <td>結束</td>
+        </tr>
+        <tr *ngFor="let row of data.picHistories">
+          <td>{{row.systemUserName}}</td>
+          <td>{{row.startDate}}</td>
+          <td>{{row.systemExpiredDate}}</td>
+        </tr>
+      </table>
+    </td>
+
   </tr>
   <tr>
     <td width="10%" align="right">合約編號：</td>
@@ -43,15 +62,46 @@
       服務費：{{data.contract.serviceAmount | number}}元（{{data.contract.serviceRate | percent}}），
       其他費用：{{data.contract.budgetAmount | number}}元，
       開戶費：{{data.contract.accountOpeningAmount | number}}元<br />
+      <table *ngIf="data.receipts?.length > 0" class="data-table" style="width: 500px">
+        <tr>
+          <td>收款日</td>
+          <td>類型</td>
+          <td class="numeric">收款金額</td>
+          <td class="numeric">累計收款</td>
+          <td class="numeric">廣告費</td>
+          <td class="numeric">累計廣告費</td>
+        </tr>
+        <tr *ngFor="let row of data.receipts">
+          <td>{{row.incomeDate}}</td>
+          <td>{{row.type.systemName}}</td>
+          <td class="numeric">{{row.amount | number}}</td>
+          <td class="numeric">{{row.cumulativeAmount | number}}</td>
+          <td class="numeric">{{row.budgetAmount | number}}</td>
+          <td class="numeric">{{row.cumulativeBudgetAmount | number}}</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td width="10%" align="right">預算：</td>
+    <td>
+      <table *ngIf="data.budgets?.length > 0" class="data-table" style="width: 350px">
+        <tr>
+          <td>存入日</td>
+          <td>類型</td>
+          <td class="numeric">存入金額</td>
+        </tr>
+        <tr *ngFor="let row of data.budgets">
+          <td>{{row.saveDate}}</td>
+          <td class="numeric">{{row.saveType.systemName}}</td>
+          <td class="numeric">{{row.amount | number}}</td>
+        </tr>
+      </table>
     </td>
   </tr>
   <tr>
     <td width="10%" align="right">合約類型：</td>
-    <td>{{data.producName}}</td>
-  </tr>
-  <tr>
-    <td width="10%" align="right">合約類型：</td>
-    <td>{{data.producName}}</td>
+    <td>{{data.productName}}</td>
   </tr>
   <tr>
     <td width="10%" align="right">委刊類型：</td>

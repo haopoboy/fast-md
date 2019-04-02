@@ -29,6 +29,12 @@ export class ContractComponent implements OnInit {
     page.content.forEach(row => {
       row.customer = row.currently.customer[0];
       row.contract = row.currently.adsContract[0];
+      row.picHistories = row.currently.picHistory[0];
+      row.receipts = row.currently.fundIncome;
+      if (row.currently.adsFundIncome.length > 0) {
+        row.receipts = row.currently.adsFundIncome;
+      }
+      row.budgets = row.currently.adsBudget;
       this.data = row;
     });
   }

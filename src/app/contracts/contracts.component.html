@@ -55,25 +55,28 @@
     <td>客戶類型</td>
     <td>合約編號</td>
     <td>產品</td>
-    <td class="numeric">合約金額</td>
     <td>預設帳戶名稱</td>
+    <td>委刊類型</td>
+    <td class="numeric">合約金額</td>
     <td class="numeric">已收款</td>
     <td>業務</td>
     <td>企劃</td>
   </thead>
-  <tbody>
+  <tbody *ngIf="!loading">
     <tr *ngFor="let row of page.content">
       <td>{{row.customer?.systemId}}</td>
       <td>{{row.customer?.systemName}}</td>
-      <td>{{row.customerTypeName}}</td>
+      <td>{{row.contract?.customerTypeName}}</td>
       <td><a target="_blank" routerLink="/contract/{{row.systemId}}">{{row.systemId}}</a></td>
       <td>{{row.productName}}</td>
-      <td class="numeric">{{row.amount}}</td>
       <td>{{row.contract?.defaultAccountName}}</td>
-      <td class="numeric">{{row.stat.receipted[0].amount | number}}</td>
+      <td>{{row.state}}</td>
+      <td class="numeric">{{row.amount | number}}</td>
+      <td class="numeric">{{(row.stat.receipted[0].amount || 0) | number}}</td>
       <td>{{row.systemUserName}}</td>
-      <td>{{row.productPersonInChargeId}}</td>
+      <td>{{row.productPersonInChargeName}}</td>
     </tr>
   </tbody>
 </table>
+<div *ngIf="loading" style="font-size: xx-large; text-align: center">讀取中</div>
 <mat-paginator [length]="page.totalElements" [pageSize]="page.size" (page)="onPageChange($event)"></mat-paginator>
