@@ -1,7 +1,22 @@
 import { HttpClient } from "@angular/common/http";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { environment } from "src/environments/environment";
+
+@Component({
+  selector: "app-contract-state",
+  styleUrls: ["./contract.component.css"],
+  template: `
+    <span *ngIf="data === 'N'">新約</span>
+    <span *ngIf="data === 'R'">續約</span>
+    <span *ngIf="data === 'V'">作廢</span>
+  `
+})
+export class ContractStateComponent implements OnInit {
+  @Input()
+  data = {};
+  ngOnInit() {}
+}
 
 @Component({
   selector: "app-contract",

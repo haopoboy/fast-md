@@ -6,8 +6,8 @@ import {
   MatButtonModule,
   MatInputModule,
   MatPaginatorModule,
-  MAT_DATE_LOCALE,
-  MatSelectModule
+  MatSelectModule,
+  MAT_DATE_LOCALE
 } from "@angular/material";
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
 import { MatDatepickerModule } from "@angular/material/datepicker";
@@ -15,7 +15,10 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { ContractComponent } from "./contract/contract.component";
+import {
+  ContractComponent,
+  ContractStateComponent
+} from "./contract/contract.component";
 import { ContractsComponent } from "./contracts/contracts.component";
 import { HttpInterceptorImpl } from "./HttpInterceptorImpl";
 import { ReceitpsComponent } from "./receitps/receitps.component";
@@ -25,7 +28,8 @@ import { ReceitpsComponent } from "./receitps/receitps.component";
     AppComponent,
     ContractsComponent,
     ReceitpsComponent,
-    ContractComponent
+    ContractComponent,
+    ContractStateComponent
   ],
   imports: [
     BrowserModule,

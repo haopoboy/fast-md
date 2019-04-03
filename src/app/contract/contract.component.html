@@ -4,8 +4,8 @@
     <td>{{data.customer.systemId}}</td>
   </tr>
   <tr>
-    <td width="10%" align="right">合約：</td>
-    <td>{{data.systemId}}</td>
+    <td width="10%" align="right">預設帳戶名稱：</td>
+    <td>{{data.contract?.defaultAccountName}}</td>
   </tr>
   <tr>
     <td width="10%" align="right">EIP 同步資料：</td>
@@ -105,7 +105,9 @@
   </tr>
   <tr>
     <td width="10%" align="right">委刊類型：</td>
-    <td>{{data.state}}</td>
+    <td>
+      <app-contract-state [data]="data.state"></app-contract-state>
+    </td>
   </tr>
   <tr>
     <td width="10%" align="right">備註：</td>
