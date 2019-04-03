@@ -63,7 +63,7 @@ export class ContractsComponent implements OnInit {
       .get(
         `${
           environment.apiBaseUrl
-        }/query/v2/contractProjectV2?onlyShowMine=false&q=${
+        }/query/v2/contractProjectV2?onlyShowMine=false&onlyShowAdwords=true&q=${
           this.searchTerm
         }${customerTypeNameQuery}${stateQuery}${startString}${endString}${pagingString}`
       )
