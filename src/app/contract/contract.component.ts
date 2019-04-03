@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-contract",
@@ -23,7 +24,11 @@ export class ContractComponent implements OnInit {
 
   async findOne(id: string) {
     const page: any = await this.http
-      .get(`/query/v2/contractProjectV2?onlyShowMine=false&systemId=${id}`)
+      .get(
+        `${
+          environment.apiBaseUrl
+        }/query/v2/contractProjectV2?onlyShowMine=false&systemId=${id}`
+      )
       .toPromise();
 
     page.content.forEach(row => {
