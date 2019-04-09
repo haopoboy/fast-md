@@ -30,3 +30,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     border: 1px solid;
     padding: 10px;
 }
+
+.data-table tbody tr:hover {
+    background-color: lightgray;
+}
