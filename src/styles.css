@@ -34,3 +34,16 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .data-table tbody tr:hover {
     background-color: lightgray;
 }
+
+.info-table {
+    width: 100%;
+    border: 1px solid;
+    border-collapse: collapse;
+    background-color: inherit;
+}
+
+.info-table th,
+.info-table td {
+    border: 1px solid;
+    padding: 10px;
+}

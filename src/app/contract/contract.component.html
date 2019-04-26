@@ -1,4 +1,4 @@
-<table class="data-table">
+<table class="info-table">
   <tr>
     <td width="10%" align="right">客戶編號：</td>
     <td>{{data.customer.systemId}}</td>
@@ -63,36 +63,40 @@
       其他費用：{{data.contract.budgetAmount | number}}元，
       開戶費：{{data.contract.accountOpeningAmount | number}}元<br />
       <table *ngIf="data.receipts?.length > 0" class="data-table">
-        <tr>
-          <th class="numeric" style="width: 2%">NO</th>
-          <th style="width: 5%">類型</th>
-          <th style="width: 2%">發票號碼</th>
-          <th style="width: 10%">發票日期</th>
-          <th style="width: 5%">支票號碼</th>
-          <th style="width: 10%">兌現日</th>
-          <th class="numeric" style="width: 5%">收款金額</th>
-          <th class="numeric" style="width: 5%">發票金額</th>
-          <th class="numeric" style="width: 5%">累計收款</th>
-          <th class="numeric" style="width: 5%">廣告費</th>
-          <th class="numeric" style="width: 5%">累計廣告費</th>
-          <th style="width: 10%">收款日</th>
-          <th>備註</th>
-        </tr>
-        <tr *ngFor="let row of data.receipts">
-          <td>{{row.rowNumber}}</td>
-          <td>{{row.type.systemName}}</td>
-          <td>{{row.invoiceNumber}}</td>
-          <td>{{row.invoiceDate}}</td>
-          <td>{{row.checkNumber}}</td>
-          <td>{{row.checkDate}}</td>
-          <td class="numeric">{{row.amount | number}}</td>
-          <td class="numeric">{{row.invoiceAmount | number}}</td>
-          <td class="numeric">{{row.cumulativeAmount | number}}</td>
-          <td class="numeric">{{row.budgetAmount | number}}</td>
-          <td class="numeric">{{row.cumulativeBudgetAmount | number}}</td>
-          <td>{{row.incomeDate}}</td>
-          <td>{{row.comment}}</td>
-        </tr>
+        <thead>
+          <tr>
+            <th class="numeric" style="width: 2%">NO</th>
+            <th style="width: 5%">類型</th>
+            <th style="width: 2%">發票號碼</th>
+            <th style="width: 10%">發票日期</th>
+            <th style="width: 5%">支票號碼</th>
+            <th style="width: 10%">兌現日</th>
+            <th class="numeric" style="width: 5%">收款金額</th>
+            <th class="numeric" style="width: 5%">發票金額</th>
+            <th class="numeric" style="width: 5%">累計收款</th>
+            <th class="numeric" style="width: 5%">廣告費</th>
+            <th class="numeric" style="width: 5%">累計廣告費</th>
+            <th style="width: 10%">收款日</th>
+            <th>備註</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of data.receipts">
+            <td>{{row.rowNumber}}</td>
+            <td>{{row.type.systemName}}</td>
+            <td>{{row.invoiceNumber}}</td>
+            <td>{{row.invoiceDate}}</td>
+            <td>{{row.checkNumber}}</td>
+            <td>{{row.checkDate}}</td>
+            <td class="numeric">{{row.amount | number}}</td>
+            <td class="numeric">{{row.invoiceAmount | number}}</td>
+            <td class="numeric">{{row.cumulativeAmount | number}}</td>
+            <td class="numeric">{{row.budgetAmount | number}}</td>
+            <td class="numeric">{{row.cumulativeBudgetAmount | number}}</td>
+            <td>{{row.incomeDate}}</td>
+            <td>{{row.comment}}</td>
+          </tr>
+        </tbody>
       </table>
     </td>
   </tr>
@@ -100,26 +104,30 @@
     <td width="10%" align="right">預算：</td>
     <td>
       <table *ngIf="data.budgets?.length > 0" class="data-table">
-        <tr>
-          <th class="numeric" style="width: 2%">NO</th>
-          <th style="width: 10%">存入日</th>
-          <th style="width: 20%">帳戶</th>
-          <th class="numeric" style="width: 5%">存入金額</th>
-          <th class="numeric" style="width: 5%">累計金額</th>
-          <th style="width: 5%">類型</th>
-          <th style="width: 5%">說明</th>
-          <th>備註</th>
-        </tr>
-        <tr *ngFor="let row of data.budgets">
-          <td>{{row.rowNumber}}</td>
-          <td>{{row.saveDate}}</td>
-          <td>{{row.accountId}}</td>
-          <td class="numeric">{{row.amount | number}}</td>
-          <td class="numeric">{{row.cumulativeAmount | number}}</td>
-          <td>{{row.saveType.systemName}}</td>
-          <td>{{row.saveNote}}</td>
-          <td>{{row.memo}}</td>
-        </tr>
+        <thead>
+          <tr>
+            <th class="numeric" style="width: 2%">NO</th>
+            <th style="width: 10%">存入日</th>
+            <th style="width: 20%">帳戶</th>
+            <th class="numeric" style="width: 5%">存入金額</th>
+            <th class="numeric" style="width: 5%">累計金額</th>
+            <th style="width: 5%">類型</th>
+            <th style="width: 5%">說明</th>
+            <th>備註</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of data.budgets">
+            <td>{{row.rowNumber}}</td>
+            <td>{{row.saveDate}}</td>
+            <td>{{row.accountId}}</td>
+            <td class="numeric">{{row.amount | number}}</td>
+            <td class="numeric">{{row.cumulativeAmount | number}}</td>
+            <td>{{row.saveType.systemName}}</td>
+            <td>{{row.saveNote}}</td>
+            <td>{{row.memo}}</td>
+          </tr>
+        </tbody>
       </table>
     </td>
   </tr>
