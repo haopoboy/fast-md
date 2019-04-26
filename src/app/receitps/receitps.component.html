@@ -1,3 +1,75 @@
 <table>
-  <tr>收款管理 ---></tr>
+  <tr>
+    <td>
+      收款管理 --->
+    </td>
+    <td>
+      <mat-form-field appearance="outline">
+        <mat-label>關鍵字</mat-label>
+        <input matInput [(ngModel)]="searchTerm" (keydown.enter)="findAll()" />
+      </mat-form-field>
+    </td>
+    <td>
+      <mat-form-field appearance="outline">
+        <mat-label>開始</mat-label>
+        <input matInput [(ngModel)]="startDate" [matDatepicker]="startPicker" (keydown.enter)="findAll()">
+        <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+        <mat-datepicker #startPicker></mat-datepicker>
+      </mat-form-field>
+    </td>
+    <td>
+      <mat-form-field appearance="outline">
+        <mat-label>結束</mat-label>
+        <input matInput [(ngModel)]="endDate" [matDatepicker]="endPicker" (keydown.enter)="findAll()">
+        <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+        <mat-datepicker #endPicker></mat-datepicker>
+      </mat-form-field>
+    </td>
+    <td>
+      <button mat-stroked-button (click)="findAll()">送出</button>
+    </td>
+  <tr>
 </table>
+
+<table class="data-table" width="100%">
+  <thead>
+    <td>合約編號</td>
+    <td>委刊類型</td>
+    <td class="numeric">合約金額</td>
+    <td>客戶名稱</td>
+    <td>收款項目</td>
+    <td>支票號碼</td>
+    <td>支票兌現日</td>
+    <td class="numeric">收款金額</td>
+    <td class="numeric">剩餘金額</td>
+    <td>收款日</td>
+    <td>統一編號</td>
+    <td class="numeric">發票金額</td>
+    <td>發票號碼</td>
+    <td>發票日期</td>
+    <td>業務</td>
+    <td>備註</td>
+  </thead>
+  <tbody *ngIf="!loading">
+    <tr *ngFor="let row of page.content">
+      <td><a target="_blank" routerLink="/contract/{{row.contractId}}">{{row.contractId}}</a></td>
+      <td>{{row.contract?.productName}}</td>
+      <td>{{row.customer?.systemName}}</td>
+      <td class="numeric">{{row.contract?.amount | number}}</td>
+      <td>{{row.typeName}}</td>
+      <td>{{row.checkNumber}}</td>
+      <td>{{row.checkDate}}</td>
+      <td class="numeric">{{row.amount | number}}</td>
+      <td class="numeric">0</td>
+      <td>{{row.incomeDate}}</td>
+      <td>{{row.taxNumber}}</td>
+      <td class="numeric">{{row.invoiceAmount | number}}</td>
+      <td>{{row.invoiceNumber}}</td>
+      <td>{{row.invoiceDate}}</td>
+      <td>{{row.contract?.systemUserName}}</td>
+      <td>{{row.comment}}</td>
+    </tr>
+  </tbody>
+</table>
+<div *ngIf="loading" style="font-size: xx-large; text-align: center">讀取中</div>
+<mat-paginator [length]="page.totalElements" [pageSize]="page.size" (page)="onPageChange($event)"></mat-paginator>
