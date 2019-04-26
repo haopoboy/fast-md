@@ -60,7 +60,7 @@
       <td>{{row.checkNumber}}</td>
       <td>{{row.checkDate}}</td>
       <td class="numeric">{{row.amount | number}}</td>
-      <td class="numeric">0</td>
+      <td class="numeric">{{row.contract?.amount - row.cumulative.receipted[0]?.amount | number}}</td>
       <td>{{row.incomeDate}}</td>
       <td>{{row.taxNumber}}</td>
       <td class="numeric">{{row.invoiceAmount | number}}</td>
