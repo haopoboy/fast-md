@@ -10,6 +10,7 @@ import { environment } from "src/environments/environment";
     <span *ngIf="data === 'N'">新約</span>
     <span *ngIf="data === 'R'">續約</span>
     <span *ngIf="data === 'V'">作廢</span>
+    <span *ngIf="data === 'D'">作廢或解約</span>
   `
 })
 export class ContractStateComponent implements OnInit {
